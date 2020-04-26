@@ -1,0 +1,50 @@
+﻿@model Controllers.ViewModels.HomeViewModel
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+@functions {
+    private string GetAntiXsrfRequestToken()
+    {
+        return Xsrf.GetAndStoreTokens(Context).RequestToken;
+    }
+}
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="text-center">
+    <p>Hi! That's not a working example, but just a simple demo of clean architecture flow</p>
+    <label asp-for="Time"></label>
+    <input type="datetime-local" asp-for="Time" />
+
+    <label asp-for="Description"></label>
+    <input type="text" asp-for="Description" />
+
+    <input type="button" value="Submit" onclick="SubmitForm()" />
+</div>
+
+
+<script>
+    function SubmitForm() {
+        var data = {
+            'Description': $("#Description").val(),
+            'Time': $("#Time").val(),
+            'User': sessionStorage.getItem('conectionId')
+        };
+
+        $.ajax({
+            url: '@Url.Action("AddToDo","ToDo")',
+            type: 'POST',
+            data: data,
+            headers: {
+                "RequestVerificationToken": "@GetAntiXsrfRequestToken()"
+            },
+            success: function (data) {
+
+            },
+            error: function (request, error) {
+
+            }
+        });
+    }
+</script>
