@@ -5,9 +5,9 @@ using UseCases.Interfaces;
 
 namespace Presenters.Services.Services
 {
-    public class ToDoHubService : IToDoHubService
+    internal class ToDoHubService : IToDoHubService
     {
-        IHubContext<ToDoHub> _hubContext;
+        private readonly IHubContext<ToDoHub> _hubContext;
 
         public ToDoHubService(IHubContext<ToDoHub> hubContext)
         {

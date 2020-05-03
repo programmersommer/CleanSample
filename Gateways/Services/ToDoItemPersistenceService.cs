@@ -3,7 +3,7 @@ using UseCases.Interfaces;
 
 namespace Gateways.Services
 {
-    public class ToDoItemPersistenceService : IToDoItemPersistenceService
+    internal class ToDoItemPersistenceService : IToDoItemPersistenceService
     {
         public void Save(ToDoItem item)
         {

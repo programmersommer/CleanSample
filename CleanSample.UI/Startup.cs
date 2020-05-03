@@ -1,15 +1,12 @@
-using Gateways.Services;
+using Gateways;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Presenters;
 using Presenters.Hubs;
-using Presenters.Services.Services;
-using UseCases.Interfaces;
-using UseCases.Services;
-using UseCases.UseCases;
+using UseCases;
 
 namespace CleanSample.UI
 {
@@ -26,16 +23,13 @@ namespace CleanSample.UI
         public void ConfigureServices(IServiceCollection services)
         {
             // UseCase services
-            services.AddScoped<IAddToDoItemUseCase, AddToDoItemUseCase>();
-            services.AddScoped<ICalendarService, CalendarService>();
+            services.RegisterUseCasesServices();
 
-            // Gateway service
-            // this service shouldn't be used from UI project directly!
-            services.AddScoped<IToDoItemPersistenceService, ToDoItemPersistenceService>();
+            // Gateway services shouldn't be used from UI project directly
+            services.RegisterGatewaysServices();
 
-            // Presenter services
-            // this service shouldn't be used from UI project directly!
-            services.AddScoped<IToDoHubService, ToDoHubService>();
+            // Presenter services shouldn't be used from UI project directly
+            services.RegisterPresentersServices();
 
             services.AddControllersWithViews();
 
