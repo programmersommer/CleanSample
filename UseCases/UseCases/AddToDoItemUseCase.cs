@@ -1,5 +1,6 @@
 ﻿using Entities;
 using System;
+using System.Threading.Tasks;
 using UseCases.Interfaces;
 
 namespace UseCases.UseCases
@@ -20,12 +21,12 @@ namespace UseCases.UseCases
         }
 
 
-        public void AddToDoItem(DateTime dateTime, string description, string user)
+        public async Task AddToDoItemAsync(DateTime dateTime, string description, string user)
         {
             var timeAvailable = _calendarService.DateTimeIsAvailable(dateTime);
             if (!timeAvailable)
             {
-                _toDoHubService.ReturnResultToUI(user, false);
+                await _toDoHubService.ReturnResultToUIAsync(user, false).ConfigureAwait(false);
                 return;
             }
 
@@ -35,7 +36,7 @@ namespace UseCases.UseCases
                 Description = description
             });
 
-            _toDoHubService.ReturnResultToUI(user, true);
+            await _toDoHubService.ReturnResultToUIAsync(user, true).ConfigureAwait(false);
         }
 
     }

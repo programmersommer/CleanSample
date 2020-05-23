@@ -14,11 +14,11 @@ namespace Presenters.Services.Services
             _hubContext = hubContext;
         }
 
-        public async Task ReturnResultToUI(string user, bool result)
+        public async Task ReturnResultToUIAsync(string user, bool result)
         {
             // we can handle/transform result here
             // for example we can return HTML
-            await _hubContext.Clients.Client(user).SendAsync("ToDoResult", result);
+            await _hubContext.Clients.Client(user).SendAsync("ToDoResult", result).ConfigureAwait(false);
         }
     }
 }

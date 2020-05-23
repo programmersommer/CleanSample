@@ -1,5 +1,6 @@
 ﻿using Controllers.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 using UseCases.Interfaces;
 
 namespace Controllers
@@ -14,9 +15,9 @@ namespace Controllers
         }
 
         [ValidateAntiForgeryToken]
-        public void AddToDo(HomeViewModel model)
+        public async Task AddToDo(HomeViewModel model)
         {
-            _addToDoItemUseCase.AddToDoItem(model.Time, model.Description, model.User);
+            await _addToDoItemUseCase.AddToDoItemAsync(model.Time, model.Description, model.User);
         }
 
     }

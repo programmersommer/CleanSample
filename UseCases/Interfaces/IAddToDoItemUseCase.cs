@@ -1,10 +1,10 @@
 ﻿using System;
-
+using System.Threading.Tasks;
 
 namespace UseCases.Interfaces
 {
     public interface IAddToDoItemUseCase
     {
-        void AddToDoItem(DateTime dateTime, string description, string user);
+        Task AddToDoItemAsync(DateTime dateTime, string description, string user);
     }
 }
