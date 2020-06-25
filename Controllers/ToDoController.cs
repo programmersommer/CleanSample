@@ -5,7 +5,10 @@ using UseCases.Interfaces;
 
 namespace Controllers
 {
-    public class ToDoController
+    // Do you know that class could be not inherited from Controller?
+    // By convention if class ends with "Controller" it is recognized as controller
+    // Just FYI. Of course better inherit API from BaseController 
+    public class ToDoController 
     {
         private readonly IAddToDoItemUseCase _addToDoItemUseCase;
 
