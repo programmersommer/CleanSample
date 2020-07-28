@@ -16,8 +16,8 @@ namespace Presenters.Services.Services
 
         public async Task ReturnResultToUIAsync(string user, bool result)
         {
-            // we can handle/transform result here
-            // for example we can return HTML
+            // we can handle/transform result here - pack into ViewModel
+            // or for example we can return HTML
             await _hubContext.Clients.Client(user).SendAsync("ToDoResult", result).ConfigureAwait(false);
         }
     }
