@@ -1,6 +1,5 @@
-using System;
 
-namespace CleanSample.UI.Models
+namespace CleanSample.UI.Error
 {
     public class ErrorViewModel
     {

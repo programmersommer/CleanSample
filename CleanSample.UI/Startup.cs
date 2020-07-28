@@ -31,7 +31,20 @@ namespace CleanSample.UI
             // Presenter services shouldn't be used from UI project directly
             services.RegisterPresentersServices();
 
-            services.AddControllersWithViews();
+            services.AddMvc(o => o.Conventions.Add(new FeatureConvention()))
+           .AddRazorOptions(options =>
+           {
+                // {0} - Action Name
+                // {1} - Controller Name
+                // {2} - Area Name
+                // {3} - Feature Name
+                // Replace normal view location entirely
+                options.ViewLocationFormats.Clear();
+               options.ViewLocationFormats.Add("/{3}/{1}/{0}.cshtml");
+               options.ViewLocationFormats.Add("/{3}/{0}.cshtml");
+               options.ViewLocationFormats.Add("/Shared/{0}.cshtml");
+               options.ViewLocationExpanders.Add(new FeatureViewLocationExpander());
+           });
 
             services.AddSignalR();
         }
@@ -45,7 +58,7 @@ namespace CleanSample.UI
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Error/Index");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
@@ -59,8 +72,8 @@ namespace CleanSample.UI
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                 name: "featuresRoute",
+                 pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapHub<ToDoHub>("/todoHub");
             });
         }
