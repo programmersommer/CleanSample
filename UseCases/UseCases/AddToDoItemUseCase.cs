@@ -30,11 +30,7 @@ namespace UseCases.UseCases
                 return;
             }
 
-            _toDoItemService.Save(new ToDoItem()
-            {
-                Time = dateTime,
-                Description = description
-            });
+            _toDoItemService.Save(new ToDoItem(dateTime, description));
 
             await _toDoHubService.ReturnResultToUIAsync(user, true).ConfigureAwait(false);
         }
