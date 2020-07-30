@@ -1,6 +1,6 @@
-﻿using System.Diagnostics;
-using CleanSample.UI.Error;
+﻿using CleanSample.UI.Error;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 
 namespace CleanSample.UI.Home

@@ -34,12 +34,12 @@ namespace CleanSample.UI
             services.AddMvc(o => o.Conventions.Add(new FeatureConvention()))
            .AddRazorOptions(options =>
            {
-                // {0} - Action Name
-                // {1} - Controller Name
-                // {2} - Area Name
-                // {3} - Feature Name
-                // Replace normal view location entirely
-                options.ViewLocationFormats.Clear();
+               // {0} - Action Name
+               // {1} - Controller Name
+               // {2} - Area Name
+               // {3} - Feature Name
+               // Replace normal view location entirely
+               options.ViewLocationFormats.Clear();
                options.ViewLocationFormats.Add("/{3}/{1}/{0}.cshtml");
                options.ViewLocationFormats.Add("/{3}/{0}.cshtml");
                options.ViewLocationFormats.Add("/Shared/{0}.cshtml");

@@ -9,6 +9,6 @@ namespace CleanSample.UI.Home
         public IActionResult Index()
         {
             return View();
-        } 
+        }
     }
 }

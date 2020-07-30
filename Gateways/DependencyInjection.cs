@@ -10,6 +10,8 @@ namespace Gateways
         {
             services.AddScoped<IToDoItemPersistenceService, ToDoItemPersistenceService>();
 
+            services.AddDbContext<ToDoContext>();
+
             return services;
         }
     }
