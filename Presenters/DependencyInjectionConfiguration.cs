@@ -4,7 +4,7 @@ using UseCases.Interfaces;
 
 namespace Presenters
 {
-    public static class DependencyInjection
+    public static class DependencyInjectionConfiguration
     {
         public static IServiceCollection RegisterPresentersServices(this IServiceCollection services)
         {

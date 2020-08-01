@@ -1,38 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Entities
 {
     // Inside entities we can have public methods - validations, calculations, business rules etc.
     // Entity = smart object
     // Fields could be in DDD-style with private set 
-    public class ToDoItem : ValueObject
+    public class ToDoItem
     {
         public int Id { get; set; }
-        public DateTime Time { get; private set; }
+        public DateTime EventDateTime { get; private set; }
         public string Description { get; private set; }
 
-        public ToDoItem(DateTime time, string description)
+        public ToDoItem(DateTime eventDateTime, string description)
         {
             if (string.IsNullOrEmpty(description))
             {
                 throw new ArgumentException($"{nameof(Description)} should not be empty");
             }
 
-            if (time < DateTime.UtcNow)
+            if (eventDateTime < DateTime.UtcNow)
             {
-                throw new ArgumentOutOfRangeException($"{nameof(Time)} should be beyond current UTC time");
+                throw new ArgumentOutOfRangeException($"{nameof(EventDateTime)} should be beyond current UTC time");
             }
 
-            Time = time;
+            EventDateTime = eventDateTime;
             Description = description;
-        }
-
-        protected override IEnumerable<object> GetAtomicValues()
-        {
-            // Using a yield return statement to return each element one at a time
-            yield return Time;
-            yield return Description;
         }
     }
 }

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Gateways.Migrations
 {
     [DbContext(typeof(ToDoContext))]
-    [Migration("20200730182524_InitialMigration")]
+    [Migration("20200801052712_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,7 +27,7 @@ namespace Gateways.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("Time")
+                    b.Property<DateTime>("EventDateTime")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

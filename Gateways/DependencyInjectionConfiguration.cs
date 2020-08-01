@@ -4,7 +4,7 @@ using UseCases.Interfaces;
 
 namespace Gateways
 {
-    public static class DependencyInjection
+    public static class DependencyInjectionConfiguration
     {
         public static IServiceCollection RegisterGatewaysServices(this IServiceCollection services)
         {

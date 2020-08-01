@@ -29,7 +29,7 @@ namespace CleanSample.UI
             string featureName = controllerActionDescriptor.Properties["feature"] as string;
             foreach (var location in viewLocations)
             {
-                yield return location.Replace("{3}", featureName);
+                yield return location.Replace("{3}", featureName, StringComparison.OrdinalIgnoreCase);
             }
         }
 

@@ -10,7 +10,7 @@ namespace CleanSample.UI
     {
         public void Apply(ControllerModel controller)
         {
-            controller.Properties.Add("feature",
+            controller?.Properties.Add("feature",
               GetFeatureName(controller.ControllerType));
         }
 

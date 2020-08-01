@@ -5,7 +5,7 @@ using UseCases.UseCases;
 
 namespace UseCases
 {
-    public static class DependencyInjection
+    public static class DependencyInjectionConfiguration
     {
         public static IServiceCollection RegisterUseCasesServices(this IServiceCollection services)
         {

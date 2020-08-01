@@ -25,7 +25,7 @@ namespace Gateways.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("Time")
+                    b.Property<DateTime>("EventDateTime")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

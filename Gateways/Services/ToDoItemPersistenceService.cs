@@ -1,5 +1,7 @@
 ﻿using Entities;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UseCases.Interfaces;
 
 namespace Gateways.Services
@@ -23,6 +25,12 @@ namespace Gateways.Services
         public IEnumerable<ToDoItem> GetToDoItems()
         {
             return _context.ToDoItems;
+        }
+
+        public ToDoItem GetToDoItem(DateTime eventDateTime)
+        {
+            return _context.ToDoItems.FirstOrDefault(t=>
+                t.EventDateTime.Hour == eventDateTime.Hour && t.EventDateTime.Day == eventDateTime.Day && t.EventDateTime.Year == eventDateTime.Year);
         }
     }
 }

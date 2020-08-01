@@ -1,4 +1,5 @@
 ﻿using Entities;
+using System;
 using System.Collections.Generic;
 
 namespace UseCases.Interfaces
@@ -7,5 +8,6 @@ namespace UseCases.Interfaces
     {
         void Save(ToDoItem item);
         IEnumerable<ToDoItem> GetToDoItems();
+        ToDoItem GetToDoItem(DateTime eventDateTime);
     }
 }

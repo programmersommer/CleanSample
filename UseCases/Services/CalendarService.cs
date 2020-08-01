@@ -5,10 +5,17 @@ namespace UseCases.Services
 {
     public class CalendarService : ICalendarService
     {
-        public bool DateTimeIsAvailable(DateTime date)
+        private readonly IToDoItemPersistenceService _toDoItemService;
+
+        public CalendarService(IToDoItemPersistenceService toDoItemService)
         {
-            // some logic checks do some event is already planned for specified day and time
-            return true;
+            _toDoItemService = toDoItemService;
+        }
+
+        public bool DateTimeIsAvailable(DateTime dateAvailable)
+        {
+            var todoItem = _toDoItemService.GetToDoItem(dateAvailable);
+            return (todoItem == default);
         }
     }
 }

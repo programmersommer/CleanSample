@@ -5,6 +5,6 @@ namespace UseCases.Interfaces
 {
     public interface ICalendarService
     {
-        bool DateTimeIsAvailable(DateTime date);
+        bool DateTimeIsAvailable(DateTime dateAvailable);
     }
 }
