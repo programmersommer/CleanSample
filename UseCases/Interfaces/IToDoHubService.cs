@@ -5,6 +5,6 @@ namespace UseCases.Interfaces
 {
     public interface IToDoHubService
     {
-        Task ReturnResultToUIAsync(string user, bool result);
+        Task ReturnResultToUIAsync(string user, bool result, string message = "");
     }
 }

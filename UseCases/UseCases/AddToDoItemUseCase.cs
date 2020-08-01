@@ -26,7 +26,7 @@ namespace UseCases.UseCases
             var timeAvailable = _calendarService.DateTimeIsAvailable(dateTime);
             if (!timeAvailable)
             {
-                await _toDoHubService.ReturnResultToUIAsync(user, false).ConfigureAwait(false);
+                await _toDoHubService.ReturnResultToUIAsync(user, false, "Time is not available").ConfigureAwait(false);
                 return;
             }
 

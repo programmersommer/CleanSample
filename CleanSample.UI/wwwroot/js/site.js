@@ -2,11 +2,11 @@
 
 var connection = new signalR.HubConnectionBuilder().withUrl("/todoHub").build();
 
-connection.on("ToDoResult", function (result) {
-    if (result)
+connection.on("ToDoResult", function (model) {
+    if (model.result)
         alert("ToDo was saved");
     else
-        alert("ToDo was not saved");
+        alert(model.message);
 });
 
 connection.start().then(function () {

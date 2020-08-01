@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using Presenters.Hubs;
+using Presenters.ViewModels;
 using System.Threading.Tasks;
 using UseCases.Interfaces;
 
@@ -14,11 +15,15 @@ namespace Presenters.Services.Services
             _hubContext = hubContext;
         }
 
-        public async Task ReturnResultToUIAsync(string user, bool result)
+        public async Task ReturnResultToUIAsync(string user, bool result, string message = "")
         {
             // we can handle/transform result here - pack into ViewModel
-            // or for example we can return HTML
-            await _hubContext.Clients.Client(user).SendAsync("ToDoResult", result).ConfigureAwait(false);
+            var model = new ToDoItemViewModel()
+            {
+                Result = result,
+                Message = message
+            };
+            await _hubContext.Clients.Client(user).SendAsync("ToDoResult", model).ConfigureAwait(false);
         }
     }
 }
