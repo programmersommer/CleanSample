@@ -22,5 +22,11 @@ namespace Controllers
         {
             await _toDoItemUseCases.AddToDoItemAsync(model.Time, model.Description, model.User);
         }
+
+        [ValidateAntiForgeryToken]
+        public async Task GetToDoItems(HomeViewModel model)
+        {
+            await _toDoItemUseCases.GetToDoItemsAsync(model.User);
+        }
     }
 }

@@ -16,14 +16,14 @@
 }
 
 <div class="text-center">
-    <p>Just a simple demo of clean architecture flow</p>
+    <p>Just a simple demo of a clean architecture flow</p>
     <label asp-for="Time"></label>
     <input type="datetime-local" asp-for="Time" />
 
     <label asp-for="Description"></label>
     <input type="text" asp-for="Description" />
 
-    <input type="button" value="Submit" onclick="SubmitForm()" />
+    <input type="button" value="Submit" onclick="SubmitForm()" id="SubmitButton" disabled />
 </div>
 
 <div class="text-center">
@@ -33,7 +33,10 @@
 
 @section Scripts
 {
+    <script src="~/js/site.js" data-token="@GetAntiXsrfRequestToken()"
+            id="site-script" asp-append-version="true"></script>
     <script src="~/js/main.js"></script>
+
     <script>
 
     function SubmitForm() {
