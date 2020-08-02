@@ -30,7 +30,15 @@ namespace UseCases.UseCases
                 return;
             }
 
-            _toDoItemService.Save(new ToDoItem(dateTime, description));
+            try
+            {
+                _toDoItemService.Save(new ToDoItem(dateTime, description));
+            }
+            catch (Exception e)
+            {
+                await _toDoHubService.ReturnResultToUIAsync(user, false, e.Message).ConfigureAwait(false);
+                return;
+            }
 
             await GetToDoItemsAsync(user);
         }
