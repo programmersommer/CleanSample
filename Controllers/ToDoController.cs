@@ -10,17 +10,17 @@ namespace Controllers
     // Just FYI. Of course better inherit API from BaseController 
     public class ToDoController
     {
-        private readonly IAddToDoItemUseCase _addToDoItemUseCase;
+        private readonly IToDoItemUseCases _toDoItemUseCases;
 
-        public ToDoController(IAddToDoItemUseCase addToDoItemUseCase)
+        public ToDoController(IToDoItemUseCases addToDoItemUseCase)
         {
-            _addToDoItemUseCase = addToDoItemUseCase;
+            _toDoItemUseCases = addToDoItemUseCase;
         }
 
         [ValidateAntiForgeryToken]
         public async Task AddToDo(HomeViewModel model)
         {
-            await _addToDoItemUseCase.AddToDoItemAsync(model.Time, model.Description, model.User);
+            await _toDoItemUseCases.AddToDoItemAsync(model.Time, model.Description, model.User);
         }
     }
 }

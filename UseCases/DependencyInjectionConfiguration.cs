@@ -9,7 +9,7 @@ namespace UseCases
     {
         public static IServiceCollection RegisterUseCasesServices(this IServiceCollection services)
         {
-            services.AddScoped<IAddToDoItemUseCase, AddToDoItemUseCase>();
+            services.AddScoped<IToDoItemUseCases, ToDoItemUseCases>();
             services.AddScoped<ICalendarService, CalendarService>();
 
             return services;

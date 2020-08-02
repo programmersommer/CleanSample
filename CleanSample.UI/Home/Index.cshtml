@@ -11,9 +11,12 @@
     ViewData["Title"] = "Home Page";
 }
 
+@section Styles {
+    <link href='css/main.css' rel='stylesheet' />
+}
 
 <div class="text-center">
-    <p>Hi! That's not a completely working example, but just a simple demo of clean architecture flow</p>
+    <p>Just a simple demo of clean architecture flow</p>
     <label asp-for="Time"></label>
     <input type="datetime-local" asp-for="Time" />
 
@@ -23,8 +26,16 @@
     <input type="button" value="Submit" onclick="SubmitForm()" />
 </div>
 
+<div class="text-center">
+    <div id="calendar"></div>
+</div>
 
-<script>
+
+@section Scripts
+{
+    <script src="~/js/main.js"></script>
+    <script>
+
     function SubmitForm() {
         var data = {
             'Description': $("#Description").val(),
@@ -47,4 +58,5 @@
             }
         });
     }
-</script>
+    </script>
+}

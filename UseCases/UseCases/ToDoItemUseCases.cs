@@ -1,25 +1,25 @@
 ﻿using Entities;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using UseCases.Interfaces;
 
 namespace UseCases.UseCases
 {
     // Iteractor
-    public class AddToDoItemUseCase : IAddToDoItemUseCase
+    public class ToDoItemUseCases : IToDoItemUseCases
     {
         private readonly ICalendarService _calendarService;
         private readonly IToDoItemPersistenceService _toDoItemService;
         private readonly IToDoHubService _toDoHubService;
 
-        public AddToDoItemUseCase(ICalendarService calendarService,
+        public ToDoItemUseCases(ICalendarService calendarService,
             IToDoItemPersistenceService toDoItemService, IToDoHubService toDoHubService)
         {
             _calendarService = calendarService;
             _toDoItemService = toDoItemService;
             _toDoHubService = toDoHubService;
         }
-
 
         public async Task AddToDoItemAsync(DateTime dateTime, string description, string user)
         {
@@ -32,8 +32,14 @@ namespace UseCases.UseCases
 
             _toDoItemService.Save(new ToDoItem(dateTime, description));
 
-            await _toDoHubService.ReturnResultToUIAsync(user, true).ConfigureAwait(false);
+            await GetToDoItemsAsync(user);
         }
 
+        public async Task GetToDoItemsAsync(string user)
+        {
+            var items = _toDoItemService.GetToDoItems().ToList();
+
+            await _toDoHubService.ReturnResultToUIAsync(user, items).ConfigureAwait(false);
+        }
     }
 }

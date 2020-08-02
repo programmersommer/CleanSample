@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using Entities;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 
 namespace UseCases.Interfaces
@@ -6,5 +8,6 @@ namespace UseCases.Interfaces
     public interface IToDoHubService
     {
         Task ReturnResultToUIAsync(string user, bool result, string message = "");
+        Task ReturnResultToUIAsync(string user, List<ToDoItem> items);
     }
 }

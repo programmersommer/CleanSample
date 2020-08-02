@@ -3,10 +3,29 @@
 var connection = new signalR.HubConnectionBuilder().withUrl("/todoHub").build();
 
 connection.on("ToDoResult", function (model) {
-    if (model.result)
-        alert("ToDo was saved");
-    else
-        alert(model.message);
+
+    if (model.items != null && model.items.length > 0) {
+
+        var events = [];
+
+        model.items.map(function (item) {
+            events.push({
+                "title": item.description,
+                "start": item.eventDateTime
+            });
+        });
+
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            events: events
+        });
+        calendar.render();
+
+        return;
+    }
+
+    alert(model.message);
 });
 
 connection.start().then(function () {
