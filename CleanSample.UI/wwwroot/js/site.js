@@ -4,7 +4,7 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/todoHub").build();
 
 connection.on("ToDoResult", function (model) {
 
-    if (model.items != null && model.items.length > 0) {
+    if (model.items != null) {
 
         var events = [];
 

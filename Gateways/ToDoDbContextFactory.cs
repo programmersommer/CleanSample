@@ -1,6 +1,7 @@
-﻿
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
+using System.IO;
 
 namespace Gateways
 {
@@ -8,10 +9,16 @@ namespace Gateways
     {
         public ToDoContext CreateDbContext(string[] args)
         {
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+               .SetBasePath(Directory.GetCurrentDirectory())
+               .AddJsonFile("appsettings.json")
+               .Build();
+
+            var connectionString = configuration.GetConnectionString("ToDoDatabase");
+
             var optionsBuilder = new DbContextOptionsBuilder<ToDoContext>();
-            // those options are used only by EF for migrations
-            // there is currently no way to get connection string from config
-            optionsBuilder.UseSqlite("DataSource=D:\\ArchitectureAndSecurity\\CleanSample\\todo.db");
+
+            optionsBuilder.UseSqlite(connectionString);
 
             return new ToDoContext(optionsBuilder.Options);
         }
