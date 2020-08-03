@@ -27,7 +27,7 @@ namespace CleanSample.UI
             services.RegisterUseCasesServices();
 
             // Gateway services shouldn't be used from UI project directly
-            services.RegisterGatewaysServices();
+            services.RegisterGatewaysServices(Configuration);
 
             // Presenter services shouldn't be used from UI project directly
             services.RegisterPresentersServices();

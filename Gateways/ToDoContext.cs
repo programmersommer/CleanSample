@@ -7,14 +7,9 @@ namespace Gateways
     {
         public DbSet<ToDoItem> ToDoItems { get; set; }
 
-        public ToDoContext()
+        public ToDoContext(DbContextOptions<ToDoContext> options) : base(options)
         {
 
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlite("DataSource=D:\\todo.db");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
