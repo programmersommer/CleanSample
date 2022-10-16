@@ -22,6 +22,8 @@ connection.on("ToDoResult", function (model) {
         });
         calendar.render();
 
+        document.getElementById('Description').value = '';
+
         return;
     }
 
