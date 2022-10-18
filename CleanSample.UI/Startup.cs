@@ -68,10 +68,10 @@ namespace CleanSample.UI
             {
                 endpoints.MapControllerRoute(
                     name: "areasRoute",
-                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{area:exists}/{controller=ToDoCalendar}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{area=home}/{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{area=home}/{controller=ToDoCalendar}/{action=Index}/{id?}");
 
                 endpoints.MapHub<ToDoHub>("/todoHub");
             });

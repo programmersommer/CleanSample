@@ -1,11 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-
-namespace CleanSample.UI.Home
+namespace CleanSample.UI.Contact
 {
-    public class HomeController : Controller
+    public class ContactController : Controller
     {
-
         public IActionResult Index()
         {
             return View();

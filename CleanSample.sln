@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29409.12
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanSample.UI", "CleanSample.UI\CleanSample.UI.csproj", "{5C30BCED-0D39-4BB5-BD8B-5094341B040C}"
 EndProject
@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entiti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateways", "Gateways\Gateways.csproj", "{233304CB-EBF6-45BE-B267-568670F44B28}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controllers", "Controllers\Controllers.csproj", "{8AC62DD5-A620-408C-8E7A-06D044717506}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Controllers", "Controllers\Controllers.csproj", "{8AC62DD5-A620-408C-8E7A-06D044717506}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
